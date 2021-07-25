@@ -11,16 +11,16 @@ public class Dispenser extends JPanel{
     }
     
     public void paintComponent(Graphics g) {
-        g.drawRect(20, 20, 100, 450);
+        g.drawRect(350, 20, 100, 450);
         if (!stack.isEmpty()){
             int count = stack.getCount();
             for(int i=0; i<count; i++)
             {
                 g.setColor( Color.BLACK );
-                g.fillOval(20, (i*30)+20, 100, 30);
-                String text = "c"+(count-i);
+                g.fillOval(350, (i*30)+20, 100, 30);
+                String text = "Candy "+(count-i);
                 g.setColor(Color.YELLOW);
-                g.drawString(text, 65,((i*30)+40));
+                g.drawString(text, 380,((i*30)+40));
             }            
         }
        
@@ -30,10 +30,10 @@ public class Dispenser extends JPanel{
             g.setColor(Color.black);
             int height = 450 - candyHeight;
             for (int i=1; i<=10; i++){
-                g.drawLine(20, candyHeight,120, candyHeight);
+                g.drawLine(350, candyHeight,450, candyHeight);
                 candyHeight += height/10;
-                g.drawLine(20, candyHeight-(height/10),120, candyHeight);
-                g.drawLine(20, candyHeight,120, candyHeight);
+                g.drawLine(350, candyHeight-(height/10),450, candyHeight);
+                g.drawLine(350, candyHeight,450, candyHeight);
             }
         }
     }
@@ -42,21 +42,21 @@ public class Dispenser extends JPanel{
         frame = new JFrame("Candy Dispenser");
         frame.setSize(700, 600);
         JPanel panel = new Dispenser();
-        panel.setSize(700, 600);
+        panel.setSize(800, 700);
         JLabel title = new JLabel();
-        title.setBounds(300, 0, 200, 30);
+        title.setBounds(100, 0, 200, 30);
         title.setText("Candy Dispenser");
         JLabel msg = new JLabel();
-        msg.setBounds(140, 100, 300, 30);
+        msg.setBounds(80, 100, 300, 30);
         JButton size = new JButton("Size");
-        size.setBounds(140, 300, 100, 30);
+        size.setBounds(140, 400, 100, 30);
         size.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){  
                 msg.setText("The dispenser has "+stack.getCount()+" candies.");  
             }
         });
         JButton push = new JButton("Push");
-        push.setBounds(240, 300, 100, 30);
+        push.setBounds(140, 300, 100, 30);
         push.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){  
                 if(stack.isFull()){
@@ -69,7 +69,7 @@ public class Dispenser extends JPanel{
             }
         });
         JButton pop = new JButton("Pop");
-        pop.setBounds(340, 300, 100, 30);
+        pop.setBounds(340, 500, 100, 30);
         pop.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){  
                 if(stack.isEmpty()){
@@ -81,19 +81,19 @@ public class Dispenser extends JPanel{
                 }  
             }
         });
-        JButton top = new JButton("peekTop");
-        top.setBounds(440, 300, 100, 30);
+        JButton top = new JButton("peek()");
+        top.setBounds(540, 300, 100, 30);
         top.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){  
                 if(stack.isEmpty()){
                     msg.setText("The dispenser is empty.");  
                 }else{
-                    msg.setText("The top candy is c"+stack.getCount());  
+                    msg.setText("The top candy is Candy "+stack.getCount());  
                 }  
             }
         });
         JButton isEmpty = new JButton("Is Empty?"); 
-        isEmpty.setBounds(540, 300, 100, 30);
+        isEmpty.setBounds(540, 400, 100, 30);
         isEmpty.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){  
                 if(stack.isEmpty())
