@@ -3,6 +3,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class Dispenser extends JPanel{
+    // Implementing the Arraystack class
     private static ArrayStack stack;
     private static JFrame frame;
 
@@ -11,11 +12,14 @@ public class Dispenser extends JPanel{
     }
     
     public void paintComponent(Graphics g) {
+        // Drawing the candy container
         g.drawRect(350, 20, 100, 450);
+        // Check whether the stack is empty
         if (!stack.isEmpty()){
             int count = stack.getCount();
             for(int i=0; i<count; i++)
             {
+                // Drawing the oval with color black and text color of yellow
                 g.setColor( Color.BLACK );
                 g.fillOval(350, (i*30)+20, 100, 30);
                 String text = "Candy "+(count-i);
@@ -25,7 +29,7 @@ public class Dispenser extends JPanel{
         }
        
         int candyHeight = 20+stack.getCount()*30;
-       
+    //    Drawing the spring with compression constant of 15
         while (candyHeight < 450){
             g.setColor(Color.black);
             int height = 450 - candyHeight;
@@ -48,6 +52,7 @@ public class Dispenser extends JPanel{
         title.setText("Candy Dispenser");
         JLabel msg = new JLabel();
         msg.setBounds(80, 100, 300, 30);
+        // Displaying the buttons 
         JButton size = new JButton("Size");
         size.setBounds(140, 400, 100, 30);
         size.addActionListener(new ActionListener(){
@@ -55,6 +60,8 @@ public class Dispenser extends JPanel{
                 msg.setText("The dispenser has "+stack.getCount()+" candies.");  
             }
         });
+
+
         JButton push = new JButton("Push");
         push.setBounds(140, 300, 100, 30);
         push.addActionListener(new ActionListener(){
@@ -68,6 +75,8 @@ public class Dispenser extends JPanel{
                 }  
             }
         });
+
+
         JButton pop = new JButton("Pop");
         pop.setBounds(340, 500, 100, 30);
         pop.addActionListener(new ActionListener(){
@@ -81,6 +90,8 @@ public class Dispenser extends JPanel{
                 }  
             }
         });
+
+        
         JButton top = new JButton("peek()");
         top.setBounds(540, 300, 100, 30);
         top.addActionListener(new ActionListener(){
